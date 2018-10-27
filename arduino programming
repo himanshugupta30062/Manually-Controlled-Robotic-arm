@@ -1,0 +1,66 @@
+
+#include <Servo.h>
+Servo myservo1;
+Servo myservo2;
+Servo myservo3;
+Servo myservo4;
+
+
+int potpin = A0;
+int potpin1 = A1;
+int potpin2 = A2;
+int potpin3=A3;
+
+int val = 0;
+int val1 = 0;
+int val2 = 0;
+int val3 = 0;
+
+void setup()
+{
+
+myservo1.attach(9);
+myservo2.attach(10);
+myservo3.attach(11);
+myservo4.attach(6);
+
+Serial.begin(9600);
+}
+
+void loop()
+{
+{
+val = analogRead(potpin);
+val = map(val, 0, 1023,0,180);
+//Serial.println(val);
+
+myservo1.write(val);
+
+delay(1);
+}
+{
+val1 = analogRead(potpin3);
+val1= map(val1,0, 1023, 0,180);
+
+myservo2.write(val1);
+//Serial.println(val1);
+
+delay(1000);
+}
+{
+val2= analogRead(potpin1);
+val2= map(val2,0, 1023, 360, 0);
+myservo3.write(val2);
+//Serial.println(val2);
+
+delay(1);
+}
+{
+val3 = analogRead(potpin2);
+val3 = map(val3, 0, 1023, 360, 0);
+myservo4.write(val3);
+//Serial.println(val3);
+
+delay(1);
+}
+}
